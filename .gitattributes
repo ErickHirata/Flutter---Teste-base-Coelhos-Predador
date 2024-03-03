@@ -1,0 +1,31 @@
+import 'dart:js_util';
+import 'dart:math' as math;
+import 'dart:convert';
+
+
+  int coelhosJovens = 0;
+  int coelhosAdultos = 2;
+  int coelhosTotais = 0;
+  int mes = 0;
+
+  for (int i = 0; i < 12; i++) {
+    mes = i + 1;
+    coelhosAdultos += coelhosJovens;
+
+    coelhosJovens = coelhosAdultos;
+    coelhosTotais = coelhosAdultos + coelhosJovens;
+
+    print(
+        'Fim do mês: $mes. População de coelhos: $coelhosTotais. Jovens: $coelhosJovens. Adultos: $coelhosAdultos');
+  }
+
+  while (coelhosTotais > 2) {
+    coelhosTotais -= (coelhosTotais * 0.75).ceil();
+    mes++;
+    print('Mês: $mes. População atual: $coelhosTotais');
+  }
+
+  if (coelhosTotais == 0) {
+    print('A população de coelhos foi extinta após $mes meses.');
+  } 
+}
